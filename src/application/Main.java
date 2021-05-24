@@ -1,21 +1,27 @@
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			//estancia FXMLLoader loader passando o caminho da view
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
+			Parent parent = loader.load(); // carrega a view
+			Scene mainScene = new Scene(parent); // estancia a sena principal passando como argumento parent
+			primaryStage.setScene(mainScene); // seta o pauco como sena principal
+			primaryStage.setTitle("Sample JavaFX appication"); // titulo do pauco
 			primaryStage.show();
-		} catch(Exception e) {
+		}
+		catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
