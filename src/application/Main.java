@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	
+	private static Scene mainScene; // declarando uma variavel statica para referenciar a sena
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -21,7 +24,7 @@ public class Main extends Application {
 			scrollPane.setFitToHeight(true);
 			scrollPane.setFitToWidth(true);
 			
-			Scene mainScene = new Scene(scrollPane); // estancia a sena principal passando como argumento parent
+			mainScene = new Scene(scrollPane); // estancia a sena principal passando como argumento parent
 			primaryStage.setScene(mainScene); // seta o pauco como sena principal
 			primaryStage.setTitle("Sample JavaFX appication"); // titulo do pauco
 			primaryStage.show();
@@ -29,6 +32,10 @@ public class Main extends Application {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Scene getMainScene() { //metodo para referenciar a sena
+		return mainScene;
 	}
 	
 	public static void main(String[] args) {
