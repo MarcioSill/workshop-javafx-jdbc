@@ -115,6 +115,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
 			
 		}
 		catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exceptin", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
 	}
